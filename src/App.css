@@ -1,38 +1,296 @@
+/* General styling for the app */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
 .App {
   text-align: center;
+  background-color: #f4f4f9;
+  min-height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Navbar styling */
+.navbar {
+  background-color: #ff5722; /* Updated navbar color */
+  color: white;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navbar a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-size: 18px;
+  position: relative; /* Required for pseudo-element */
 }
 
+/* Home link specific hover effects */
+.navbar a.home-link {
+  transition: color 0.3s, transform 0.3s;
+}
+
+.navbar a.home-link:hover {
+  color: #ffd700; /* Change link color on hover */
+  transform: scale(1.1); /* Slightly enlarge the link on hover */
+}
+
+.navbar a:hover {
+  color: #ffd700; /* Change link color on hover */
+}
+
+/* Header styling */
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+  padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.App-header h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
 }
 
-@keyframes App-logo-spin {
+/* News section */
+.news-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* Updated news-item with colors */
+.news-item {
+  background: linear-gradient(to bottom right, #ff7e5f, #feb47b); /* Gradient background */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  padding: 15px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for hover effect */
+}
+
+.news-item:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+}
+
+.news-item img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.news-item h3 {
+  font-size: 1.25rem;
+  margin: 10px 0;
+  color: #fff; /* Change title color for better contrast */
+}
+
+.news-item p {
+  color: #fff; /* Change description color for better contrast */
+  font-size: 0.9rem;
+}
+
+.news-item a {
+  color: #fff; /* Change link color for better contrast */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.news-item a:hover {
+  color: #ffd700; /* Change link color on hover */
+}
+
+/* Footer styling */
+.footer {
+  background-color: #282c34;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Loading bar style */
+.LoadingBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background-color: #f11946;
+  z-index: 1000;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .news-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .news-item {
+    width: 90%;
+  }
+
+  .navbar a {
+    font-size: 16px;
+  }
+}
+
+/* News Card */
+.news-card {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Badge styling */
+.badge-container {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.badge {
+  background-color: #f11946;
+  color: white;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+/* Card body styling */
+.card-body {
+  padding: 15px;
+  text-align: left;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.card-date {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.card-img-top {
+  border-radius: 5px 5px 0 0;
+}
+
+/* Button styling */
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Spinner Container */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full-page height */
+}
+
+/* Spinner Image Styling */
+.spinner-image {
+  width: 100px; /* Control the spinner size */
+  animation: fadeIn 0.6s ease-in-out;
+  margin: 0 auto;
+}
+
+/* Fade-in effect */
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
   }
 }
+
+/* Navbar Logo */
+.navbar-logo {
+  height: 30px; /* Adjust the height as needed */
+  margin-right: 8px; /* Space between logo and brand name */
+}
+
+/* Navbar Links */
+.navbar-nav .nav-link {
+  transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffd700; /* Change link color on hover */
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  background-color: #343a40; /* Darker background for dropdown */
+}
+
+.dropdown-item:hover {
+  background-color: #495057; /* Change background color on hover */
+}
+
+/* Header Styling */
+.header-title {
+  margin: 5px 0; /* Vertical margin */
+  margin-top: 50px; /* Top margin */
+  color: #2c3e50; /* Darker text color for contrast */
+  font-family: 'Roboto', sans-serif; /* Different font family */
+  font-weight: 600; /* Medium bold font weight */
+  font-size: 3.5rem; /* Increased font size */
+  text-align: center; /* Center the text */
+  border-bottom: 3px solid #e67e22; /* Orange bottom border for emphasis */
+  background-color: #ecf0f1; /* Light background color */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Increased padding around the text */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  display: inline-block; /* Ensure the background fits the text */
+  transition: transform 0.3s ease; /* Smooth scaling effect */
+}
+
+.header-title:hover {
+  transform: scale(1.02); /* Slightly scale up on hover */
+}
+
+/* Additional Style for Centering */
+.text-center {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+}
+

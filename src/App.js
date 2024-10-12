@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import Navbar from './Components/Navbar';
+import NewsRoutes from './Components/NewsRoutes';
+import LoadingBar from 'react-top-loading-bar';
+import { BrowserRouter as Router } from "react-router-dom";
 
-function App() {
+const App = () => {
+  const [progress, setProgress] = useState(0);
+  
+  // Ideally, the API key should be stored in an environment variable for security reasons
+  const apiKey = process.env.REACT_APP_NEWS_API_KEY || "6e27551ebe77426ea653a2c2469641ce";
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div>
+        <Router>
+          <Navbar />
+          <LoadingBar color='#f11946' progress={progress} />
+          <NewsRoutes apiKey={apiKey} setProgress={setProgress} />
+        </Router>
+      </div>
+    </>
   );
 }
 
